@@ -25,9 +25,9 @@ class BulkListMixin(object):
     """
     queryset = super(BulkListMixin, self).get_queryset()
     if self.request.method == 'GET':
-      filtering_ids = self.request.QUERY_PARAMS.getlist('ids[]')
+      filtering_ids = self.request.query_params.getlist('ids[]')
       if not filtering_ids:
-        filtering_ids = self.request.QUERY_PARAMS.getlist('ids')
+        filtering_ids = self.request.query_params.getlist('ids')
       if filtering_ids:
         if len(filtering_ids) == 1:
           filtering_ids = filtering_ids[0].split(',')
@@ -49,8 +49,6 @@ class BulkListCreateUpdateReadOnlyModelViewSet(
 
 # ViewSets define the view behavior.
 class UserViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
-  # permission_classes = (IsAuthenticated, )
-  # authentication_classes = (JSONWebTokenAuthentication, )
   queryset = User.objects.all()
   serializer_class = UserSerializer
   model = User
@@ -60,6 +58,7 @@ class UserViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
     If provided 'pk' is "me" then return the current user.
     """
     if request.user and pk == 'me':
+      print request.auth
       if not request.user.is_anonymous():
         return Response(UserSerializer(request.user).data)
       else:
@@ -70,13 +69,3 @@ class UserViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
   def get_permissions(self):
     # allow non-authenticated user to create via POST
     return (IsStaffOrTargetUser()),
-
-# class DataView(APIView):
-
-#   def get(self, request):
-#     data = {
-#         'id': request.user.id,
-#         'username': request.user.username,
-#         'token': str(request.auth)
-#     }
-#     return Response(data)

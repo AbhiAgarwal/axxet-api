@@ -20,3 +20,5 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+LOGIN_REDIRECT_URL = "/"
