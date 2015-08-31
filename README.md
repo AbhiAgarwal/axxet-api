@@ -19,7 +19,7 @@ Please follow those steps:
 ## Run in browser
 
 * run browser window
-* open page ```http://localhost:8000```, it shows home page
+* open page ```http://localhost:8000/```, it shows home page
 * open page ```http://localhost:8000/api```, it shows DRF API Root, please login (admin:abc123) to get access
 * open page ```http://localhost:8000/admin```, it gets access to Django's admin pages
 
@@ -27,5 +27,9 @@ Please follow those steps:
 
 * Get token:
 ```curl -X POST -d "username=admin&password=abc123" http://localhost:8000/api/token-auth/```
+* Refresh token:
+```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api/refresh-api-key/```
+* Verify token:
+```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api/verify-api-key/```
 * Get users list:
 ```curl -H "Authorization: JWT <TOKEN>" http://localhost:8000/api/users/```
