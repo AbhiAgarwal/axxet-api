@@ -25,11 +25,16 @@ Please follow those steps:
 
 ## API Examples
 
+### Tokens
+
 * Get token:
-```curl -X POST -d "username=admin&password=abc123" http://localhost:8000/api/token-auth/```
+```curl -X POST -d "username=admin&password=abc123" http://localhost:8000/api-key/get/```
 * Refresh token:
-```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api/refresh-api-key/```
+```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api-key/refresh/```
 * Verify token:
-```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api/verify-api-key/```
+```curl -X POST -H "Content-Type: application/json" -d '{"token":"<EXISTING_TOKEN>"}' http://localhost:8000/api-key/verify/```
+
+### Etc.
+
 * Get users list:
 ```curl -H "Authorization: JWT <TOKEN>" http://localhost:8000/api/users/```
