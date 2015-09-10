@@ -1,17 +1,15 @@
 from django.http import HttpResponseForbidden
-from django.contrib.auth.models import User
 
 from rest_framework import routers, viewsets, status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 
 from rest_framework_bulk import BulkCreateModelMixin, BulkUpdateModelMixin
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .permissions import IsStaffOrTargetUser
-from .serializers import UserSerializer
+from .serializers import AssetSerializer
+from .models import Asset
 
 class BulkListMixin(object):
   """ A mixin to perform bulk operations over HTTP GET. """
@@ -48,23 +46,15 @@ class BulkListCreateUpdateReadOnlyModelViewSet(
   pass
 
 # ViewSets define the view behavior.
-class UserViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
-  queryset = User.objects.all()
-  serializer_class = UserSerializer
-  model = User
+class AssetViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
+  queryset = Asset.objects.all()
+  serializer_class = AssetSerializer
+  model = Asset
 
-  def retrieve(self, request, pk=None):
-    """
-    If provided 'pk' is "me" then return the current user.
-    """
-    if request.user and pk == 'me':
-      if not request.user.is_anonymous():
-        return Response(UserSerializer(request.user).data)
-      else:
-        response = {"detail": "Authentication credentials were not provided."}
-        return Response(response, status=status.HTTP_403_FORBIDDEN)
-    return super(UserView, self).retrieve(request, pk)
-
-  def get_permissions(self):
-    # allow non-authenticated user to create via POST
-    return (IsStaffOrTargetUser()),
+  # def list(self, request, pk=None):
+  #   if not request.user.is_anonymous():
+  #     queryset = Asset.objects.all()
+  #     return Response(AssetSerializer(queryset).data)
+  #   else:
+  #     response = {"detail": "Authentication credentials were not provided."}
+  #     return Response(response, status=status.HTTP_403_FORBIDDEN)
