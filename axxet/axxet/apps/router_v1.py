@@ -1,5 +1,5 @@
 from rest_framework import routers
-from axxet.apps.api.views import (
+from axxet.apps.common.views import (
   UserViewSet,
 )
 

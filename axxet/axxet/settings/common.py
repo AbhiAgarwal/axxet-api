@@ -22,8 +22,6 @@ SECRET_KEY = 'tqb-a-e^4x+j^sq*fbl=$#2u&h*9p@qy!d%u7j0ricf%otlwt$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 # Application definition
