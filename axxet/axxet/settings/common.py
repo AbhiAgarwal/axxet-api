@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'axxet.apps.common',
     'axxet.apps.api',
+    'rest_framework_swagger',
 )
 
 MIDDLEWARE_CLASSES = (

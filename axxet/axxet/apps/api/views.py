@@ -22,3 +22,6 @@ class AssetViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
     queryset = Asset.objects.allowed_for_user(request.user)
     serializer = AssetSerializer(queryset, many=True)
     return Response(serializer.data)
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)

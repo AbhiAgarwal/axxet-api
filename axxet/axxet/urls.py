@@ -10,6 +10,7 @@ from axxet.apps.router_v1 import router
 # Admin
 urlpatterns = patterns('',
   url(r'^admin/', include(admin.site.urls)),
+  url(r'^devdocs/', include('rest_framework_swagger.urls')),
 )
 
 # Wire up our API using automatic URL routing.
