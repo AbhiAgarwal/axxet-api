@@ -10,7 +10,6 @@ from axxet.apps.router_v1 import router
 # Admin
 urlpatterns = patterns('',
   url(r'^$', lambda r: HttpResponseRedirect('docs/')),
-  url(r'^admin/', include(admin.site.urls)),
 )
 
 # Wire up our API using automatic URL routing.
