@@ -1,10 +1,16 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
+from django.conf.urls.static import static
+from django.conf import settings
+from django.http import HttpResponseRedirect
 
 from axxet.apps.router_v1 import router
+from axxet.settings.common import STATIC_ROOT
 
 # Admin
 urlpatterns = patterns('',
+  url(r'^$', lambda r: HttpResponseRedirect('docs/')),
   url(r'^admin/', include(admin.site.urls)),
 )
 
