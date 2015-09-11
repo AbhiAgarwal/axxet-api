@@ -6,7 +6,6 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 
 from axxet.apps.router_v1 import router
-from axxet.settings.common import STATIC_ROOT
 
 # Admin
 urlpatterns = patterns('',
