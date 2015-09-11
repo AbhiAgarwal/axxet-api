@@ -47,7 +47,6 @@ class BulkListCreateUpdateReadOnlyModelViewSet(
   """
   pass
 
-# ViewSets define the view behavior.
 class UserViewSet(BulkListCreateUpdateReadOnlyModelViewSet):
   queryset = User.objects.all()
   serializer_class = UserSerializer

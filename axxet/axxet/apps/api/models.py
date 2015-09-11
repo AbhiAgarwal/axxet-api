@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class AssetQuerySet(models.query.QuerySet):
   def allowed_for_user(self, user):
-    return self.filter(owner=user)
+    return self.filter(user=user)
 
 class AssetManager(models.Manager):
   use_for_related_fields = True
@@ -15,5 +15,5 @@ class AssetManager(models.Manager):
     return self.get_query_set().allowed_for_user(*args, **kwargs)
 
 class Asset(models.Model):
-  owner = models.ForeignKey(User, related_name='asset_user', verbose_name='Owner')
+  user = models.ForeignKey(User, related_name='asset_user', verbose_name='Owner')
   objects = AssetManager()
