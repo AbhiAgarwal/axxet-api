@@ -15,7 +15,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Organization',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(
+                    verbose_name='ID',
+                    serialize=False,
+                    auto_created=True,
+                    primary_key=True
+                    )),
                 ('organization_name', models.CharField(max_length=100)),
                 ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
             ],

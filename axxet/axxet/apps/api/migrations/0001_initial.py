@@ -15,8 +15,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Asset',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('owner', models.ForeignKey(related_name='asset_user', verbose_name=b'Owner', to=settings.AUTH_USER_MODEL)),
+                ('id',
+                 models.AutoField(
+                     verbose_name='ID',
+                     serialize=False,
+                     auto_created=True,
+                     primary_key=True)),
+                ('owner',
+                 models.ForeignKey(
+                     related_name='asset_user',
+                     verbose_name=b'Owner',
+                     to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

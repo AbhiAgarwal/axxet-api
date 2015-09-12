@@ -15,11 +15,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='asset',
             name='name',
-            field=models.CharField(max_length=100, null=True, blank=True),
+            field=models.CharField(
+                max_length=100,
+                null=True,
+                blank=True),
         ),
         migrations.AlterField(
             model_name='asset',
             name='user',
-            field=models.ForeignKey(related_name='asset_user', verbose_name=b'Owner', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                related_name='asset_user',
+                verbose_name=b'Owner',
+                to=settings.AUTH_USER_MODEL),
         ),
     ]

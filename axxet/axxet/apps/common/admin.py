@@ -6,14 +6,18 @@ from .models import Organization
 
 # Define an inline admin descriptor for Organization model
 # which acts a bit like a singleton
+
+
 class OrganizationInline(admin.StackedInline):
-  model = Organization
-  can_delete = False
-  verbose_name_plural = 'organization'
+    model = Organization
+    can_delete = False
+    verbose_name_plural = 'organization'
 
 # Define a new User admin
+
+
 class UserAdmin(UserAdmin):
-  inlines = (OrganizationInline, )
+    inlines = (OrganizationInline, )
 
 # Re-register UserAdmin
 admin.site.unregister(User)
