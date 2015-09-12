@@ -38,3 +38,8 @@ Please follow those steps:
 
 * Get users list:
 ```curl -H "Authorization: JWT <TOKEN>" http://localhost:8000/api/users/```
+
+## Running pep8
+
+- ```pep8 .```
+- ```autopep8 --in-place --aggressive --aggressive <filename>```
